@@ -33,27 +33,48 @@ public class PlayerController : MonoBehaviour
     float turnSmoothTime = 0.1f;
 
 
-    public void OnMove(InputValue value)
+    public void OnMove(InputAction.CallbackContext value)
     {
-        _move = value.Get<Vector2>();
+        _move = value.ReadValue<Vector2>();
     }
-    public void OnLook(InputValue value)
+    public void OnLook(InputAction.CallbackContext value)
     {
-        _look = value.Get<Vector2>();
+        _look = value.ReadValue<Vector2>();
     }
-    public void OnFreeLook(InputValue value)
+    public void OnFreeLook(InputAction.CallbackContext value)
     {
-        freeLookEnabled = (value.Get<float>() ==1f);
+        freeLookEnabled = (value.ReadValue<float>() == 1f);
     }
-    public void OnJump(InputValue value)
+    public void OnJump(InputAction.CallbackContext value)
     {
-        if (isGrounded)
+        if (value.started)
         {
-            fallVelocity = Mathf.Sqrt(jumpHeight * -2 * gravity);
-            animationController.JumpStart();
+            if (isGrounded)
+            {
+                fallVelocity = Mathf.Sqrt(jumpHeight * -2 * gravity);
+                animationController.JumpStart();
+            }
         }
     }
+    public void OnInteract(InputAction.CallbackContext value)
+    {
+        Ray ray = cam.GetComponent<Camera>().ScreenPointToRay(Mouse.current.position.ReadValue());
+        RaycastHit hit;
 
+        if (Physics.Raycast(ray, out hit))
+        {
+            // Debug.Log("We hit " + hit.collider.name + " " + hit.point);
+            Interactable interactable = hit.collider.GetComponent<Interactable>();
+            if (interactable != null)
+            {
+                InteractWithObject(interactable);
+            }
+        }
+    }
+    void InteractWithObject(Interactable interactableObject)
+    {
+        interactableObject.OnFocus(transform);
+    }
     // Start is called before the first frame update
     void Start()
     {
