@@ -12,8 +12,52 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09d9fa70444f9ae4d9b06bff9b112779, type: 3}
   m_Name: InventoryStorage
   m_EditorClassIdentifier: 
+  playerData: {fileID: 11400000, guid: 2cca396ef429e874da29af3bf9a2cbb2, type: 2}
+  playerLevel: 1
+  experience: 0
+  experienceToLevel: 1000
+  maxHealth: 100
+  currentHealth: 100
+  maxMana: 60
+  currentMana: 60
   inventorySize: 20
-  items: []
-  equipedItems: []
+  items:
+  - {fileID: 11400000, guid: b149babca5f9faf4f834fe8d40127b7c, type: 2}
+  - {fileID: 11400000, guid: 2a4c6e00c4095204ea6bdc84ea336d8c, type: 2}
+  - {fileID: 11400000, guid: f123e93c5a6b69e45a8739659854ff93, type: 2}
+  - {fileID: 11400000, guid: f123e93c5a6b69e45a8739659854ff93, type: 2}
+  - {fileID: 11400000, guid: b149babca5f9faf4f834fe8d40127b7c, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  equipedItems:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   learnedSpells: []
-  equipedSpells: []
+  equipedSpells:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}

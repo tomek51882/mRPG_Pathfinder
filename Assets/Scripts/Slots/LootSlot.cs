@@ -9,6 +9,7 @@ public class LootSlot : Slot
 
     public void LootItem()
     {
+        //Debug.Log("Clicked Loot0");
         if (item != null)
         {
             if (onSlotLooted != null)

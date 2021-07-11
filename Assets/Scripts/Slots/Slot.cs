@@ -8,13 +8,13 @@ public class Slot : MonoBehaviour
     public BaseItem item;
     public Image icon;
     public int slotID;
-    public void FillSlot(BaseItem newItem)
+    public virtual void FillSlot(BaseItem newItem)
     {
         item = newItem;
         icon.sprite = item.icon;
         icon.enabled = true;
     }
-    public void ClearSlot()
+    public virtual void ClearSlot()
     {
         item = null;
         icon.sprite = null;
@@ -25,6 +25,7 @@ public class Slot : MonoBehaviour
     {
         if (item != null)
         {
+            //Debug.Log("Using: " + item.name);
             item.Use();
         }
     }

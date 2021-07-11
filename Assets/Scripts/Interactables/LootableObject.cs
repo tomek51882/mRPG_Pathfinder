@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(LootTable))]
 public class LootableObject : Interactable
 {
+    public float lootRadius = 3f;
 
     public LootMode lootRollMode;
     public int numberOfItemsToDrop;
@@ -29,7 +30,7 @@ public class LootableObject : Interactable
     {
         if (isLootWindowOpen)
         {
-            if (Vector3.Distance(this.transform.position, focusedBy.transform.position) > radius)
+            if (Vector3.Distance(this.transform.position, interactedBy.transform.position) > lootRadius)
             {
                 CloseLootWindow();
             }
@@ -95,10 +96,14 @@ public class LootableObject : Interactable
     }
     public void CloseLootWindow()
     {
-        OnDefocus();
         Destroy(window);
         window = null;
         isLootWindowOpen = false;
+    }
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, lootRadius);
     }
 
 }

@@ -5,6 +5,8 @@ using UnityEngine;
 public class Equipment : Item
 {
     public EquipInSlot equipSlot;
+
+    public ItemStat[] statistics;
     public override void Use()
     {
         base.Use();
@@ -14,6 +16,8 @@ public class Equipment : Item
     void Equip()
     {
         //EquipmentStorage storage = Resources.Load<EquipmentStorage>("Storage/EquipmentStorage");
+        InventoryStorage inventory = Resources.Load<InventoryStorage>("InventoryStorage");
+        inventory.EquipItem(this);
         //RemoveFromInventory();
         //storage.Equip(this);
     }

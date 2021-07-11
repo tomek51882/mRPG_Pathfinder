@@ -27,7 +27,6 @@ public class PlayerController : MonoBehaviour
     Vector3 velocity;
     float fallVelocity;
     bool isGrounded;
-    bool isLanded = true;
 
     float turnSmoothVelocity;
     float turnSmoothTime = 0.1f;
@@ -58,22 +57,26 @@ public class PlayerController : MonoBehaviour
     }
     public void OnInteract(InputAction.CallbackContext value)
     {
-        Ray ray = cam.GetComponent<Camera>().ScreenPointToRay(Mouse.current.position.ReadValue());
-        RaycastHit hit;
-
-        if (Physics.Raycast(ray, out hit))
+        if (value.performed)
         {
-            // Debug.Log("We hit " + hit.collider.name + " " + hit.point);
-            Interactable interactable = hit.collider.GetComponent<Interactable>();
-            if (interactable != null)
+            Ray ray = cam.GetComponent<Camera>().ScreenPointToRay(Mouse.current.position.ReadValue());
+            RaycastHit hit;
+
+            if (Physics.Raycast(ray, out hit))
             {
-                InteractWithObject(interactable);
+                // Debug.Log("We hit " + hit.collider.name + " " + hit.point);
+                Interactable interactable = hit.collider.GetComponent<Interactable>();
+                if (interactable != null)
+                {
+                    InteractWithObject(interactable);
+                }
             }
         }
+        
     }
     void InteractWithObject(Interactable interactableObject)
     {
-        interactableObject.OnFocus(transform);
+        interactableObject.InitiateInteraction(transform);
     }
     // Start is called before the first frame update
     void Start()

@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 114af8e5a8289e84c85b3aff615e0f13, type: 3}
-  m_Name: New Item
+  m_Name: Iron Ingot
   m_EditorClassIdentifier: 
-  name: New Item
-  icon: {fileID: 0}
+  name: Iron Ingot
+  icon: {fileID: 21300000, guid: 5abcf51a998be7b4896f718a7affd53c, type: 3}

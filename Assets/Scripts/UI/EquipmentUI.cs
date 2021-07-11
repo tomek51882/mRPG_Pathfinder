@@ -1,44 +1,37 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
-public class InventoryUI : MonoBehaviour
+public class EquipmentUI : MonoBehaviour
 {
     InventoryStorage storage;
     [SerializeField] Transform itemsParent;
-    InventorySlot[] slots;
-    public GameObject inventoryPanel;
+    EquipmentSlot[] slots;
     private void Awake()
     {
         storage = Resources.Load<InventoryStorage>("InventoryStorage");
-        storage.onItemChanged += UpdateUI;
+        storage.onEquipmentChanged += UpdateUI;
     }
     // Start is called before the first frame update
     void Start()
     {
-        slots = itemsParent.GetComponentsInChildren<InventorySlot>();
+        slots = itemsParent.GetComponentsInChildren<EquipmentSlot>();
         for (int i = 0; i < slots.Length; i++)
         {
             slots[i].slotID = i;
+            slots[i].slotType = (EquipInSlot)i;
         }
         UpdateUI();
-    }
-
-    // Update is called once per frame
-    public void OnToggleInventory(InputAction.CallbackContext value)
-    {
-        inventoryPanel.SetActive(!inventoryPanel.activeSelf);
     }
     void UpdateUI()
     {
         for (int i = 0; i < slots.Length; i++)
         {
-            if (i < storage.items.Count)
+            if (i < storage.equipedItems.Count)
             {
-                if (storage.items[i] != null)
+                if (storage.equipedItems[i] != null)
                 {
-                    slots[i].FillSlot(storage.items[i]);
+                    slots[i].FillSlot(storage.equipedItems[i]);
                 }
                 else
                 {
