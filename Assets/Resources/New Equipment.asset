@@ -15,3 +15,6 @@ MonoBehaviour:
   name: New Item
   icon: {fileID: 21300000, guid: bb593116423062f43b261c6cb72da313, type: 3}
   equipSlot: 3
+  statistics:
+  - name: 0
+    value: 0

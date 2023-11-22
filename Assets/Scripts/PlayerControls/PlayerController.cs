@@ -95,7 +95,8 @@ public class PlayerController : MonoBehaviour
         Quaternion previousCameraRotation = cameraTransform.transform.rotation;
         if (isGrounded && fallVelocity < 0)
         {
-            fallVelocity = -2f;
+            //It would be nice to reset this value as fast as player is not grounded
+            fallVelocity = -3f;
         }
         if (direction.magnitude >= 0.1f)
         {

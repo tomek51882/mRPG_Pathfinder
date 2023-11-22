@@ -17,7 +17,7 @@ MonoBehaviour:
     Stamina:
       baseValue: 10
       bonusValue: 0
-      actualBase: 0
+      actualBase: 10
       actualBonus: 0
       statModifiers: []
     Strength:
